@@ -1,60 +1,16 @@
 <template>
   <v-app>
-    <v-app-bar v-if="currentRoute !== '/login'">
-      <v-img class="mx-2" :src="logo" max-height="40" max-width="40" contain></v-img>
-      <v-app-bar-title>Manage Surveys</v-app-bar-title>
-      <v-spacer></v-spacer>
-      <v-toolbar-items>
-        <v-btn variant="text" @click="goToSurevysList">Surveys List</v-btn>
-        <v-btn variant="text" @click="goToCreateSurvey">Create Survey</v-btn>
-        <button @click="handleLogout" class="black-button">LOGOUT</button>
-      </v-toolbar-items>
-    </v-app-bar>
     <router-view />
   </v-app>
 </template>
 
 <script>
 import logo from "./assets/oc-logo-white.png";
-import AuthDataService from "./services/AuthDataService";
 export default {
   name: "App",
   data: () => ({
     logo,
-    currentRoute: "",
   }),
-  methods: {
-    goToSurevysList() {
-      this.$router.push({ name: "surveysList" });
-    },
-    goToCreateSurvey() {
-      this.$router.push({ name: "createSurvey" });
-    },
-    handleLogout() {
-      const userId = sessionStorage.getItem("userId");
-      AuthDataService.logout(userId).then((response) => {
-        sessionStorage.removeItem("authToken");
-        sessionStorage.removeItem("userId");
-        sessionStorage.removeItem("userType");
-        this.$router.push({ name: "login" });
-      });
-    },
-  },
-  created() {
-    const isAuth = sessionStorage.getItem("authToken");
-    const userType = sessionStorage.getItem("userType");
-    if (isAuth && userType === "user") {
-      this.$router.push({ name: "surveysList" });
-    } else {
-      this.$router.push({ name: "login" });
-    }
-    this.$watch(
-      () => this.$route.params,
-      () => {
-        this.currentRoute = this.$route.path;
-      }
-    );
-  },
 };
 </script>
 <style>
@@ -90,84 +46,5 @@ h4,
 h5,
 h6 {
   font-size: 20px;
-}
-
-.wrapper {
-  padding: 5% 40px 0 40px;
-  background: #eae9e9;
-  min-height: 100vh;
-  max-height: auto;
-}
-
-.width-100 {
-  width: 100%;
-}
-
-.error {
-  color: orangered;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 16px;
-  padding: 6px;
-  background-color: var(--lightGrey);
-  border-radius: 5px;
-}
-
-.black-button {
-  background: var(--colorBlack);
-  border-radius: 15px;
-  padding: 10px 15px;
-  transition: 0.4s ease-in;
-  color: var(--colorWhite);
-  margin: 10px 0;
-}
-
-.black-button:hover {
-  box-shadow: 0px 10px 25px #2b2b2b7a;
-}
-
-.form {
-  border: 1px solid var(--lightGrey);
-  border-radius: 10px;
-  margin-top: 15px;
-  padding: 20px 20px;
-  box-shadow: var(--boxShadow);
-  background: var(--colorWhite);
-}
-
-.checkbox {
-  width: max-content;
-  height: 50px;
-}
-
-.highlight__text {
-  color: rgb(144, 144, 187);
-  font-size: 16px;
-}
-
-.v-input__details {
-  display: none;
-}
-
-.v-input {
-  margin: 10px 0 !important;
-}
-
-.register-headings {
-  margin: 10px 0 15px 0;
-  font-weight: 600;
-  font-size: 18px;
-}
-
-.register-headings h1 {
-  font-size: 25px;
-  margin: 5px 0;
-  font-weight: 800;
-}
-
-@media(max-width: 900px) {
-  .wrapper {
-    padding: 10% 40px 0 40px;
-  }
 }
 </style>
