@@ -1,7 +1,9 @@
 <template>
   <div class="wrapper">
-    <h1>Surveys List</h1>
-    <h4 class="highlight__text">{{ message }}</h4>
+    <div class="register-headings">
+      <h1>Surveys List</h1>
+      <h4 class="highlight__text">{{ message }}</h4>
+    </div>
     <div v-show="surveysLength > 0">
       <v-row class="albums__list--table">
         <v-col cols="9" sm="2">
@@ -80,7 +82,7 @@ export default {
   border-radius: 10px;
   display: flex;
   justify-content: center;
-  margin: 10px 0px 20px 0px;
+  margin: 20px 0px 20px 0px !important;
   box-shadow: var(--boxShadow);
   background: var(--colorWhite);
 }

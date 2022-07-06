@@ -1,7 +1,9 @@
 <template>
   <div class="wrapper">
-    <h1>Create Survey</h1>
-    <h4 class="highlight__text">{{ message }}</h4>
+    <div class="register-headings">
+      <h1>Create Survey</h1>
+      <h4 class="highlight__text">{{ message }}</h4>
+    </div>
     <v-form class="form" @submit="createSurvey">
       <v-text-field label="Title" v-model="survey.title"
       :rules="[rules.fieldRequired]" />
