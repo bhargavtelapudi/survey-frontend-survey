@@ -1,1 +1,1 @@
-# survey-frontend-survey
+# surevy-frontend application for user
