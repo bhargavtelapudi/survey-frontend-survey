@@ -3,7 +3,7 @@
     <img :src="loginBgImg" alt="" />
     <div class="login-wrapper">
       <div class="login-headings">
-        <h1>ADMIN LOGIN</h1>
+        <h1>LOGIN</h1>
         <h5 class="error" v-show="message">{{ message }}</h5>
       </div>
       <v-form class="login-form">
@@ -41,11 +41,11 @@ export default {
       };
       AuthDataService.login(formData)
         .then((response) => {
-          if (response.status === 200 && response.data.user_type === "admin") {
+          if (response.status === 200 && response.data.user_type === "user") {
             sessionStorage.setItem("authToken", response.data.accessToken);
             sessionStorage.setItem("userId", response.data.id);
             sessionStorage.setItem("userType", response.data.user_type);
-            this.$router.push({ name: "usersList" });
+            this.$router.push({ name: "surveysList" });
           }
         })
         .catch((e) => {
