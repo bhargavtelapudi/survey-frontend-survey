@@ -1,1 +1,1 @@
-# surevy-frontend application for user
+# surevy-frontend application for end user
