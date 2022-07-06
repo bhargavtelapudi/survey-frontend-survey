@@ -43,8 +43,8 @@ export default {
   created() {
     const isAuth = sessionStorage.getItem("authToken");
     const userType = sessionStorage.getItem("userType");
-    if (isAuth && userType === "admin") {
-      this.$router.push({ name: "usersList" });
+    if (isAuth && userType === "user") {
+      this.$router.push({ name: "surveysList" });
     } else {
       this.$router.push({ name: "login" });
     }
