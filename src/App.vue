@@ -83,6 +83,15 @@ body {
   box-sizing: border-box;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 20px;
+}
+
 .wrapper {
   padding: 5% 40px 0 40px;
   background: #eae9e9;
@@ -133,6 +142,7 @@ body {
 
 .highlight__text {
   color: rgb(144, 144, 187);
+  font-size: 16px;
 }
 
 .v-input__details {
@@ -141,6 +151,18 @@ body {
 
 .v-input {
   margin: 10px 0 !important;
+}
+
+.register-headings {
+  margin: 10px 0 15px 0;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.register-headings h1 {
+  font-size: 25px;
+  margin: 5px 0;
+  font-weight: 800;
 }
 
 @media(max-width: 900px) {
