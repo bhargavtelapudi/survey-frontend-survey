@@ -75,4 +75,19 @@ export default {
 };
 </script>
 <style>
+.albums__list--table {
+  border: 1px solid var(--colorLightGrey);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0px 20px 0px;
+  box-shadow: var(--boxShadow);
+  background: var(--colorWhite);
+}
+
+.album__item--wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 </style>
