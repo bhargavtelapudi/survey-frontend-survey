@@ -27,6 +27,7 @@ html {
   --colorLightGrey: #d6d1d19c;
   --lightGrey: #f8f2f2;
   --boxShadow: 0px 10px 25px rgba(0, 0, 0, 0.177);
+  --skyBlue:rgb(93, 93, 180);
 }
 
 body {
@@ -46,5 +47,38 @@ h4,
 h5,
 h6 {
   font-size: 20px;
+}
+
+.wrapper {
+  padding: 10px 20px;
+  background: #eae9e9;
+  min-height: 100vh;
+  max-height: auto;
+}
+
+.form {
+  border: 1px solid var(--lightGrey);
+  border-radius: 10px;
+  margin-top: 15px;
+  padding: 30px;
+  box-shadow: var(--boxShadow);
+  background: var(--colorWhite);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.black-button {
+  background: var(--colorBlack);
+  border-radius: 10px;
+  padding: 10px 15px;
+  transition: 0.4s ease-in;
+  color: var(--colorWhite);
+  margin: 10px auto;
+  width: 30%;
+}
+
+.black-button:hover {
+  box-shadow: 0px 10px 25px #2b2b2b7a;
+  background: var(--skyBlue);
 }
 </style>
