@@ -1,6 +1,9 @@
 <template>
   <div class="wrapper">
-    <v-form class="form" @submit="handleSubmitSurvey" ref="form" lazy-validation>
+    <div class="form" v-show="showDisclaimer">
+      <h1 class="disclaimer__text">{{ disclaimerMessage }}</h1>
+    </div>
+    <v-form class="form" @submit="handleSubmitSurvey" ref="form" lazy-validation v-show="!showDisclaimer">
       <div class="header__card">
         <h1>{{ survey.title }}</h1>
         <div class="header__card--align">
@@ -52,7 +55,8 @@ export default {
         title: "",
         questions: [],
       },
-      successfullySubmitted: false,
+      showDisclaimer: false,
+      disclaimerMessage: "",
       rules: {
         required: (value) => !!value || `Field Required !`,
         email: (value) => {
@@ -76,6 +80,10 @@ export default {
           this.survey.questions = formQuestions;
         })
         .catch((e) => {
+          if (e.response.status === 400 || e.response.status === 404) {
+            this.showDisclaimer = true;
+            this.disclaimerMessage = 'Your are not authorized to fill the survey !'
+          }
           this.message = e.response.data.message;
         });
     },
@@ -97,7 +105,8 @@ export default {
         SurveyDataService.submitSurveyResponse(formApiData)
           .then((response) => {
             if (response.status === 200) {
-            this.successfullySubmitted = true;
+              this.showDisclaimer = true;
+              this.disclaimerMessage = 'THANK YOU! Your response has been submitted.'
             }
           })
           .catch((e) => {
@@ -167,6 +176,13 @@ export default {
   text-align: center;
   border-radius: 5px;
   margin-bottom: 10px;
+}
+
+.disclaimer__text {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 25px;
+  color: orangered;
 }
 
 @media screen and (max-width: 900px) {
