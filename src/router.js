@@ -2,9 +2,15 @@ import { createWebHistory, createRouter } from "vue-router";
 const routes = [
   {
     name: 'submitSurvey',
-    path: '/submit-survey/:surveyId',
+    path: '/survey-frontend-survey/submit-survey/:surveyId',
     component: () => import('./views/SubmitSurvey.vue'),
-    props:true
+    props: true
+  },
+  {
+    name: '404',
+    path: '/survey-frontend-survey/',
+    component: () => import('./views/404.vue'),
+    props: true
   }
 ];
 const router = createRouter({
