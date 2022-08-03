@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="form" v-show="showDisclaimer">
-      <h1 class="disclaimer__text">{{ disclaimerMessage }}</h1>
+      <h1 class="disclaimer__text highlight__text">{{ disclaimerMessage }}</h1>
     </div>
     <v-form class="form" @submit="handleSubmitSurvey" ref="form" lazy-validation v-show="!showDisclaimer">
       <div class="header__card">
@@ -82,7 +82,7 @@ export default {
         .catch((e) => {
           if (e.response.status === 400 || e.response.status === 404) {
             this.showDisclaimer = true;
-            this.disclaimerMessage = 'Your are not authorized to fill the survey !'
+            this.disclaimerMessage = 'INVALID DETAILS !'
           }
           this.message = e.response.data.message;
         });
@@ -183,6 +183,11 @@ export default {
   text-transform: uppercase;
   font-size: 25px;
   color: orangered;
+}
+
+.highlight__text {
+  color: rgb(144, 144, 187);
+  font-weight: 600;
 }
 
 @media screen and (max-width: 900px) {
